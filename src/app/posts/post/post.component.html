@@ -1,0 +1,40 @@
+<div>
+
+
+  <div class=" text-center">
+    <h1>{{post.eigenaar}}</h1>
+    <p class="lead">on {{ post.datum | date: longDate }}</p>
+
+  </div>
+  <div class="text-center">
+
+    <img class="img-thumbnail rounded foto" src="{{post.afbeelding}}">
+    <p>{{post.caption}}</p>
+  </div>
+  <hr>
+  <div>
+    <p>Reacties</p>
+    <mat-list-item *ngFor="let comment of post.comments">
+
+      <app-comment [comment]="comment"></app-comment>
+
+
+    </mat-list-item>
+    <mat-list-item>
+      <div class="jumbotron pb-1 pt-2 mb-1">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit(post)">
+          <input type="text" formControlName="reactie" placeholder="Schrijf een reactie...">
+          <button type="submit" mat-raised-button ng-disabled="!imag">
+            add
+          </button>
+        </form>
+      </div>
+
+
+    </mat-list-item>
+  </div>
+
+
+  <hr>
+
+</div>

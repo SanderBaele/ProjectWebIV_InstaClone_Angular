@@ -1,0 +1,18 @@
+{
+  "workbench.colorCustomizations": {},
+  "workbench.colorTheme": "Default Dark+",
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  "explorer.openEditors.visible": 0,
+  "editor.minimap.enabled": true,
+  "editor.renderWhitespace": "none",
+  "editor.renderIndentGuides": true,
+  "editor.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontWeight": "normal",
+  "editor.fontSize": 12,
+  "terminal.integrated.fontFamily": "Menlo, Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontWeight": "normal",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "editor.formatOnSave": true
+}

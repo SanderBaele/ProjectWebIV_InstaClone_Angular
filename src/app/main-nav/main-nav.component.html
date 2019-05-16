@@ -1,0 +1,31 @@
+<div>
+  <mat-toolbar class="navbar container-fluid">
+    <div class="titel">
+      <a class="zwarteKleur" [routerLink]="['']">InstaClone</a>
+      </div>
+   
+   
+      <div class="items">
+      <span *ngIf="(loggedInUser$ | async) as user; else loggedOut">
+        <span>
+        <a class="zwarteKleur" [routerLink]="['/profiel']"> {{ user }}</a>
+         
+        </span>
+        <span> <a class="zwarteKleur" (click)="logout()" [routerLink]="['/login']">
+            Logout
+          </a></span>
+
+      </span>
+      <ng-template #loggedOut> <span>
+          <a class="zwarteKleur"[routerLink]="['/login']">
+            Login
+          </a>
+        </span></ng-template>
+
+
+
+
+    </div>
+  </mat-toolbar>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4" *ngFor="
+    let localPost of (posts$ | async )
+  ">
+
+      <mat-card class="mb-4">
+        <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
+          <app-post class="kaart" [post]="localPost"></app-post>
+        </mat-card-content>
+      </mat-card>
+
+
+
+
+    </div>
+  </div>
+
+
+
+</div>

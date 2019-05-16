@@ -1,0 +1,102 @@
+
+<!--
+<div height=100% class="jumbotron text-center">
+  <img src="../../assets/images/instaclone.png" width=200>
+ 
+  <h1 class="display-4">Welcome to InstaClone</h1>
+  
+  
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+      <div class="card card-signin my-5">
+        <div class="card-body">
+          <h5 class="card-title text-center">Sign In</h5>
+          <form (submit)="loginUser($event)" class="form-signin">
+            <div class="form-label-group my-3">
+
+              <input type="text" id="username" class="form-control" placeholder="Email address or Username" required autofocus>
+            </div>
+          
+            <div class="form-label-group">
+
+              <input type="password" id="password" class="form-control" placeholder="Password" required>
+
+            </div>
+            <div class="pb-0 form-group">
+                <input class=" my-3  btn btn-primary" [routerLink]="user?['/post-list']:[]" type="submit" value="Submit">
+                <a class="mt-2" [routerLink]="['/register']" class="btn btn-link">Registreer</a>
+            </div>
+            
+        
+      
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>-->
+
+<div height=100% class="mb-0 jumbotron text-center">
+  <img src="../../assets/images/instaclone.png" width=200>
+ 
+  <h1 class="display-4">Welcome to InstaClone</h1>
+
+  </div>
+<div fxLayout="row" fxLayoutAlign="center center" class="login-main">
+  <mat-card class="card">
+    <form [formGroup]="user" (ngSubmit)="onSubmit()">
+      <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content fxLayout="column">
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="email"
+            aria-label="email"
+            data-cy="login-email"
+            formControlName="username"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="password"
+            aria-label="password"
+            data-cy="login-password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </mat-card-content>
+      <mat-card-actions fxLayout="row" fxLayoutAlign="space-between center">
+        <a class="ml-2" [routerLink]="['/register']"><h5>register</h5></a>
+
+        <button
+          mat-raised-button
+          
+          color="primary"
+          data-cy="login-button"
+        
+          
+          >
+          <a (click)="onSubmit()">  Login</a>
+        
+          
+        </button>
+     
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+
