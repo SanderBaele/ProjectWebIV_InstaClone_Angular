@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     private authService: AuthenticationService,
     private router: Router,
     private fb: FormBuilder
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.user = this.fb.group({
@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
     });
 
 
-    
+
   }
 
   getErrorMessage(errors: any) {
@@ -81,7 +81,7 @@ export class RegisterComponent implements OnInit {
     } else if (errors.minlength) {
       return `needs at least ${
         errors.minlength.requiredLength
-      } characters (got ${errors.minlength.actualLength})`;
+        } characters (got ${errors.minlength.actualLength})`;
     } else if (errors.userAlreadyExists) {
       return `user already exists`;
     } else if (errors.email) {
@@ -92,7 +92,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-     
+
     this.authService
       .register(
         this.user.value.firstname,
@@ -107,7 +107,7 @@ export class RegisterComponent implements OnInit {
               this.router.navigateByUrl(this.authService.redirectUrl);
               this.authService.redirectUrl = undefined;
             } else {
-              this.router.navigate(['/recipe/list']);
+              this.router.navigate(['/post-list']);
             }
           } else {
             this.errorMsg = `Could not login`;
@@ -118,11 +118,11 @@ export class RegisterComponent implements OnInit {
           if (err.error instanceof Error) {
             this.errorMsg = `Error while trying to login user ${
               this.user.value.email
-            }: ${err.error.message}`;
+              }: ${err.error.message}`;
           } else {
             this.errorMsg = `Error ${err.status} while trying to login user ${
               this.user.value.email
-            }: ${err.error}`;
+              }: ${err.error}`;
           }
         }
       );

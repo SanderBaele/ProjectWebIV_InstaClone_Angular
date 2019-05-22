@@ -34,14 +34,7 @@ export class PostComponent implements OnInit {
 
 
 
-    //post.comments.push(new Comment(this._currentUser.user.naam, this.myForm.value.reactie));
-  /*  post.comments.push(new Comment("commenter", this.myForm.value.reactie));
-
-    this._currentUser.geefDetails().subscribe(val => post.addComment(new Comment(val.firstName.toString()+" "+val.lastName.toString(),this.myForm.value.reactie)));
-
-    console.log("post id ="+ post.id);
-    console.log("post ="+ (post as Post));
-    this.voegToeAanDatabase(post);*/
+  
 
   }
   voegToeAanDatabase(post:Post){

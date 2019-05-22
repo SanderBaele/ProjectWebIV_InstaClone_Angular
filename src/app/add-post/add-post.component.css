@@ -1,0 +1,14 @@
+.btn{
+    border: 1px solid black;
+   background-color:rgb(250, 250, 250);
+   color:black;
+   box-shadow:none;
+}
+.cntr{
+    padding-left:auto;
+    padding-right:auto;
+}
+.filebtn{
+    visibility:hidden;
+    display:none;
+}

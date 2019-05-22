@@ -15,15 +15,15 @@ export class ProfielComponent {
 
 
   private _fetchPosts$: Observable<Post[]>
-   = this._postDataService.posts$;
+    = this._postDataService.UserPosts$;
 
   constructor(private _postDataService: PostDataService, private _currentUser: AuthenticationService) { }
 
   get posts$(): Observable<Post[]> {
-   /* let n: number;
-    this._currentUser.geefDetails().subscribe(val =>
-      n = val.id
-    );*/
+    /* let n: number;
+     this._currentUser.geefDetails().subscribe(val =>
+       n = val.id
+     );*/
 
     return this._fetchPosts$;/*.pipe(
 
@@ -33,5 +33,14 @@ export class ProfielComponent {
 
   }
 
+  verwijderPost(post: Post) {
+    console.log(post.id);
+    this._postDataService.verwijderPost$(post.id).subscribe(val => {
+      console.log(val);
+
+      this._fetchPosts$
+        = this._postDataService.UserPosts$;
+    });
+  }
 
 }

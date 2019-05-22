@@ -1,41 +1,42 @@
-<div class="container ">
-  <mat-card>
-    <mat-card-title>Maak een post</mat-card-title>
-    <mat-card-content>
+<div class="container text-center">
 
-      <div>
-        <p>
-          <input type="file" accept="image/*" (change)="changeListener($event)">
-        </p>
-        <div *ngIf="image">
-          <h3>Uw foto:</h3>
-          <!--  <h4>Base64 encoded:</h4>
+  <h1 class="display-2">Deel een post</h1>
+
+
+  <div class="cntr">
+    <div class="">
+      <label class="btn" for="files">Kies uw foto</label>
+      <input id="files" required type="file" class="filebtn" accept="image/*" (change)="changeListener($event)">
+    </div>
+    <div *ngIf="image">
+      <h3>Uw foto:</h3>
+      <!--  <h4>Base64 encoded:</h4>
              <p>{{image?.replace("data:image/png;base64,", "")}}</p>-->
 
-          <img width=200 src="{{image}}" alt="">
-        </div>
-      </div>
-      <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-        <hr>
-
-
-        <mat-form-field appearance="legacy">
-          <mat-label>Caption</mat-label>
-          <input matInput type="text" formControlName="caption" placeholder="Think of a fitting placeholder">
-
-        </mat-form-field>
-        <div> 
-          <button class="btn btn-lg btn-secondary" type="submit" mat-raised-button ng-disabled="!imag">
-            add
-          </button></div>
-
-      </form>
+      <img width=200 src="{{image}}" alt="">
+    </div>
+  </div>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
 
 
 
+    <mat-form-field appearance="legacy">
+      <mat-label>Beschrijf uw post...</mat-label>
+      <input matInput type="text" formControlName="caption" placeholder="">
 
-    </mat-card-content>
-  </mat-card>
+    </mat-form-field>
+    <div>
+      <button class="btn " type="submit" mat-raised-button ng-disabled="!imag">
+        Delen
+      </button></div>
+
+  </form>
+  <hr>
+
+
+
+
+
 </div>
 
 <!-- REMOVE {{ recipe.get('ingredients') | json }} -->

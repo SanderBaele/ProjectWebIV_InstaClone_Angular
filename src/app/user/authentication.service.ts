@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { Observable, BehaviorSubject, of, Subject } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { CurrentUserService } from '../current-user.service';
 import { PostDataService } from '../post-data.service';
@@ -23,17 +23,17 @@ function parseJwt(token) {
 @Injectable({
   providedIn: 'root'
 })
-export class AuthenticationService implements OnInit{
+export class AuthenticationService implements OnInit {
   ngOnInit(): void {
     console.log("na refresh")
-   console.log(this.user$.getValue())
+    console.log(this.user$.getValue())
   }
   private readonly _tokenKey = 'currentUser';
   private _user$: BehaviorSubject<string>;
   private _userObject$: BehaviorSubject<User>;
   public redirectUrl: string;
-
-  constructor(private http: HttpClient, private currentUser: PostDataService) {
+  public loadingError$ = new Subject<string>();
+  constructor(private http: HttpClient) {
     /*kijken of token al bestaat (of al iemand ingelogd is) */
     let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
     /*als token goed is extend lifetime*/
@@ -52,7 +52,7 @@ deze waarde zijn
     this._user$ = new BehaviorSubject<string>(
       parsedToken && parsedToken.unique_name
     );
-    
+
 
     /* deze user is de ingelogde user, als deze veranderd zal iedereen die gesubscribed is
     deze nieuwe waarde krijgen*/
@@ -61,7 +61,7 @@ deze waarde zijn
   get user$(): BehaviorSubject<string> {
     return this._user$;
   }
-  get userObject$(): BehaviorSubject<User>{
+  get userObject$(): BehaviorSubject<User> {
     return this._userObject$;
   }
 
@@ -86,14 +86,14 @@ deze waarde zijn
 
 
             // KIJKEN OF DE PERSOON GOED GELADEN IS
-          //  this.currentUser.getUser$(email).subscribe(val => console.log(val));
-         /*   this.currentUser.getUser$(email).subscribe(val => this._userObject$.next(val));
-           this.userObject$.subscribe(val => console.log(val));*/
-           this.currentUser.getUser$(email).subscribe(val => console.log(val));
-          // this.userObject$.subscribe(val => console.log(val));
+            //  this.currentUser.getUser$(email).subscribe(val => console.log(val));
+            /*   this.currentUser.getUser$(email).subscribe(val => this._userObject$.next(val));
+              this.userObject$.subscribe(val => console.log(val));*/
+            //     this.currentUser.getUser$(email).subscribe(val => console.log(val));
+            // this.userObject$.subscribe(val => console.log(val));
 
-          
-     
+
+
 
 
             return true;
@@ -103,10 +103,24 @@ deze waarde zijn
         })
       );
   }
-  geefDetails():Observable<User>{
-   // console.log("email in geefdetails="+this.user$.getValue());
-    return this.currentUser.getUser$(this.user$.getValue());
+  geefDetails(): Observable<User> {
+    // console.log("email in geefdetails="+this.user$.getValue());
+
+
+    let params = new HttpParams().set("email", this.user$.getValue());
+
+    return this.http.get(`${environment.apiUrl}/user/`, { params: params }).pipe(
+      catchError(error => {
+
+        this.loadingError$.next(error.statusText);
+        return of(null);
+      }), map((p: any) => User.fromJSON(p)));
+
   }
+
+
+
+
   logout() {
     if (this.user$.getValue()) {
       localStorage.removeItem(this._tokenKey);

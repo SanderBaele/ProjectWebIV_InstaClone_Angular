@@ -4,8 +4,9 @@
     let localPost of (posts$ | async )
   ">
 
-      <mat-card class="mb-4">
-        <mat-card-content [style.overflow]="'auto'" [style.height.px]="'500'">
+      <mat-card class="kaart mb-4">
+        <mat-card-content [style.overflow]="'auto'" [style.height.px]="'600'">
+          <button (click)=verwijderPost(localPost) class=" btn-warn">Verwijder deze post</button>
           <app-post class="kaart" [post]="localPost"></app-post>
         </mat-card-content>
       </mat-card>

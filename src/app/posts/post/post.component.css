@@ -1,3 +1,10 @@
 .foto {
   max-height: 400px;
 }
+mat-form-field{
+  margin-left: 0.6rem;
+  width: 400px;
+}
+button{
+  margin-left: 1rem;
+}

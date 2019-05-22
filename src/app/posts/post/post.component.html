@@ -20,13 +20,20 @@
 
 
     </mat-list-item>
+    <hr>
     <mat-list-item>
-      <div class="jumbotron pb-1 pt-2 mb-1">
+      <div class="tkstvld pb-1 pt-2 mb-1">
         <form [formGroup]="myForm" (ngSubmit)="onSubmit(post)">
-          <input type="text" formControlName="reactie" placeholder="Schrijf een reactie...">
-          <button type="submit" mat-raised-button ng-disabled="!imag">
-            add
-          </button>
+
+
+
+          <mat-form-field appearance="legacy">
+            <input matInput class="tekstveld" type="text" formControlName="reactie"
+              placeholder="Schrijf een reactie...">
+     
+          </mat-form-field>       <button class="btn-primary" type="submit" mat-raised-button ng-disabled="!imag">
+              Plaats reactie
+            </button>
         </form>
       </div>
 
@@ -35,6 +42,6 @@
   </div>
 
 
-  <hr>
+
 
 </div>
