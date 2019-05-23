@@ -1,6 +1,8 @@
 import { createYield } from "typescript";
 
 describe('Alle testen', function () {
+  
+
   it('De app runt', function () {
 
     cy.visit('')
@@ -8,6 +10,9 @@ describe('Alle testen', function () {
  
 
   });
+
+
+
   it('De posts kunnen opgehaald worden', function() {
     cy.server(
      
@@ -24,7 +29,7 @@ describe('Alle testen', function () {
     cy.route({
       method: 'GET',
       status:200,
-      url: 'https://localhost:44393/api/posts',
+      url: '*/posts*',
       response: [{id:2, caption:'De verwachte caption'}]   
     });
     cy.visit('/login');
@@ -77,9 +82,9 @@ describe('Alle testen', function () {
     
    
   });
- /* it('Op naam klikken in navbar navigeert naar profiel', function() {
+  it('Foto toevoegen button navigeert naar add-post component', function() {
  
-    /*INLOGGEN
+    /*INLOGGEN*/
     cy.server();
     cy.visit('/login');
     cy.get('[data-cy=login-email]').type('student@hogent.be');
@@ -89,14 +94,37 @@ describe('Alle testen', function () {
   
 
 
-    cy.get('[data-cy=profielButton]').click();
-    cy.url().should('include', '/profiel')
+    cy.get('[data-cy=fotoToevoegen]').click();
+    cy.url().should('include', '/add-post')
 
 
 
     
    
-  });*/
+  });
+  it('Een post werd gemaakt met caption (zonder foto)', function() {
+ 
+    /*INLOGGEN*/
+    cy.server();
+    cy.visit('/login');
+    cy.get('[data-cy=login-email]').type('student@hogent.be');
+    cy.get('[data-cy=login-password]').clear();
+    cy.get('[data-cy=login-password]').type('P@ssword1111');
+    cy.get('[data-cy=login-button]').click();
+  
+
+
+    cy.get('[data-cy=fotoToevoegen]').click();
+    cy.url().should('include', '/add-post')
+    cy.get('[data-cy=caption]').type('Een tekst voor de caption');
+    cy.get('[data-cy=deelKnop]').click();
+    cy.url().should('include', '/post-list')
+    
+
+
+    
+   
+  });
 
   /*  it('filter works', function() {
       cy.visit('/');
@@ -130,3 +158,5 @@ describe('Alle testen', function () {
       cy.get('[data-cy=appError]').should('be.visible');
     });*/
 });
+
+

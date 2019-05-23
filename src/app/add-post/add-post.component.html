@@ -22,11 +22,11 @@
 
     <mat-form-field appearance="legacy">
       <mat-label>Beschrijf uw post...</mat-label>
-      <input matInput type="text" formControlName="caption" placeholder="">
+      <input matInput data-cy="caption" type="text" formControlName="caption" placeholder="">
 
     </mat-form-field>
     <div>
-      <button class="btn " type="submit" mat-raised-button ng-disabled="!imag">
+      <button class="btn " data-cy="deelKnop" type="submit" mat-raised-button ng-disabled="!imag">
         Delen
       </button></div>
 

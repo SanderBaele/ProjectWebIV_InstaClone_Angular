@@ -6,8 +6,8 @@
 
       <mat-card class="kaart mb-4">
         <mat-card-content [style.overflow]="'auto'" [style.height.px]="'600'">
-          <button (click)=verwijderPost(localPost) class=" btn-warn">Verwijder deze post</button>
-          <app-post class="kaart" [post]="localPost"></app-post>
+          <button data-cy="verwijderButton" (click)=verwijderPost(localPost) class=" btn-warn">Verwijder deze post</button>
+          <app-post data-cy="userPosts" class="kaart" [post]="localPost"></app-post>
         </mat-card-content>
       </mat-card>
 
