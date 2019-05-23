@@ -11,7 +11,7 @@
         <a data-cy="profielButton" class="zwarteKleur" [routerLink]="['/profiel']"> {{ user }}</a>
          
         </span>
-        <span> <a class="zwarteKleur" (click)="logout()" [routerLink]="['/login']">
+        <span> <a data-cy="logoutKnop"class="zwarteKleur" (click)="logout()" [routerLink]="['/login']">
             Logout
           </a></span>
 

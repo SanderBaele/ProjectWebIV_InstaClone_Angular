@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "eigenaarId": 2,
+    "eigenaar": "Sander Baele",
+    "caption": "Caption voor de foto",
+    "afbeelding": "",
+    "datum":"2019-01-04T00:00:00",
+    "comments":
+    [{"id":1,"postId":1,"posterNaam":"Daan Janssen",
+      "beschrijving":"Leuke foto","datum":"2019-02-06T00:00:00"}
+      ,{"id":2,"postId":1,"posterNaam":"Stan Van Buren",
+        "beschrijving":"Mooie foto",
+        "datum":"2019-01-02T00:00:00"}]
+  }
+  
+]
