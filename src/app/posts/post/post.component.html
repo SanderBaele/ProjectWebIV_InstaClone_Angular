@@ -28,10 +28,10 @@
 
 
           <mat-form-field appearance="legacy">
-            <input matInput class="tekstveld" type="text" formControlName="reactie"
+            <input data-cy="commentInput" matInput class="tekstveld" type="text" formControlName="reactie"
               placeholder="Schrijf een reactie...">
      
-          </mat-form-field>       <button class="btn-primary" type="submit" mat-raised-button ng-disabled="!imag">
+          </mat-form-field>       <button class="btn-primary" data-cy="commentButton" type="submit" mat-raised-button ng-disabled="!imag">
               Plaats reactie
             </button>
         </form>

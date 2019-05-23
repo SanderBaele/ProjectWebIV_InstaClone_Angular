@@ -8,7 +8,7 @@
       <div class="items">
       <span *ngIf="(loggedInUser$ | async) as user; else loggedOut">
         <span>
-        <a class="zwarteKleur" [routerLink]="['/profiel']"> {{ user }}</a>
+        <a data-cy="profielButton" class="zwarteKleur" [routerLink]="['/profiel']"> {{ user }}</a>
          
         </span>
         <span> <a class="zwarteKleur" (click)="logout()" [routerLink]="['/login']">
